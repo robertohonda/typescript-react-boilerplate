@@ -1,43 +1,42 @@
-import React from "react"
-import PropTypes from "prop-types"
-import {withRouter} from 'react-router-dom'
-import IconButton from "@material-ui/core/IconButton"
-import Badge from "@material-ui/core/Badge"
-import MenuItem from "@material-ui/core/MenuItem"
-import Menu from "@material-ui/core/Menu"
-import AccountCircle from "@material-ui/icons/AccountCircle"
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"
-import NotificationsIcon from "@material-ui/icons/Notifications"
-import MoreIcon from "@material-ui/icons/MoreVert"
+import Badge from "@material-ui/core/Badge";
+import IconButton from "@material-ui/core/IconButton";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import MoreIcon from "@material-ui/icons/MoreVert";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import React from "react";
+import {RouteComponentProps, withRouter} from "react-router-dom";
 
-class PrimarySearchAppBar extends React.Component {
-  state = {
+class PrimarySearchAppBar extends React.Component<{classes: any} & RouteComponentProps<{}>> {
+  public state = {
     anchorEl: null,
-    mobileMoreAnchorEl: null
+    mobileMoreAnchorEl: null,
+  };
+
+  public handleProfileMenuOpen = (event: any) => {
+    this.setState({ anchorEl: event.currentTarget });
   }
 
-  handleProfileMenuOpen = event => {
-    this.setState({ anchorEl: event.currentTarget })
+  public handleMenuClose = () => {
+    this.setState({ anchorEl: null });
+    this.handleMobileMenuClose();
   }
 
-  handleMenuClose = () => {
-    this.setState({ anchorEl: null })
-    this.handleMobileMenuClose()
+  public handleMobileMenuOpen = (event: any) => {
+    this.setState({ mobileMoreAnchorEl: event.currentTarget });
   }
 
-  handleMobileMenuOpen = event => {
-    this.setState({ mobileMoreAnchorEl: event.currentTarget })
+  public handleMobileMenuClose = () => {
+    this.setState({ mobileMoreAnchorEl: null });
   }
 
-  handleMobileMenuClose = () => {
-    this.setState({ mobileMoreAnchorEl: null })
-  }
-
-  render() {
-    const { anchorEl, mobileMoreAnchorEl } = this.state
-    const { classes } = this.props
-    const isMenuOpen = Boolean(anchorEl)
-    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
+  public render() {
+    const { anchorEl, mobileMoreAnchorEl } = this.state;
+    const { classes }: any = this.props;
+    const isMenuOpen = Boolean(anchorEl);
+    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     const renderMenu = (
       <Menu
@@ -50,7 +49,7 @@ class PrimarySearchAppBar extends React.Component {
         <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
         <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
       </Menu>
-    )
+    );
 
     const renderMobileMenu = (
       <Menu
@@ -83,7 +82,7 @@ class PrimarySearchAppBar extends React.Component {
           <p>Profile</p>
         </MenuItem>
       </Menu>
-    )
+    );
 
     return (
       <React.Fragment>
@@ -119,13 +118,8 @@ class PrimarySearchAppBar extends React.Component {
         {renderMenu}
         {renderMobileMenu}
       </React.Fragment>
-    )
+    );
   }
 }
 
-PrimarySearchAppBar.propTypes = {
-  history: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired
-}
-
-export default withRouter(PrimarySearchAppBar)
+export default withRouter(PrimarySearchAppBar);

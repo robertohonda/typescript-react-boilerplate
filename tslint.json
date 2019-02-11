@@ -6,6 +6,7 @@
   ],
   "rules": {
     // override tslint-react rules here
+    "jsx-no-multiline-js": false
   },
   "linterOptions": {
     "exclude": [

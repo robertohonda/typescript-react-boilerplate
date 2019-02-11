@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+// import { Dispatch } from "redux";
 import { addCounter, decCounter } from "../../store/actions/counter/counter";
 
 interface IProps {
@@ -26,9 +26,9 @@ const mapStateToProps = ({ counter }: { counter: number }) => ({
   counter,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  addCounter: () => dispatch(addCounter()),
-  decCounter: () => dispatch(decCounter()),
-});
+const mapDispatchToProps = {
+  addCounter,
+  decCounter,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

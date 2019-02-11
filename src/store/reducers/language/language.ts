@@ -1,13 +1,13 @@
-// import {SET_LANGUAGE} from '../actions/types';
-// import { language } from '../../config/translation'
+// import { language } from "../../../translations/config";
+import {SET_LANGUAGE} from "../../actions/types";
 
-// const initialState = language
+const initialState = "pt";
 
-// export default (state = initialState, action) => {
-//     switch(action.type) {
-//         case SET_LANGUAGE:
-//             return action.payload
-//         default:
-//             return state;
-//     }
-// };
+export default (state = initialState, action: any) => {
+    switch (action.type) {
+        case SET_LANGUAGE:
+            return action.payload;
+        default:
+            return state;
+    }
+};

@@ -2,6 +2,7 @@ const webpack = require("webpack")
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const TSLintPlugin = require("tslint-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 require("dotenv").config();
 
@@ -14,15 +15,23 @@ module.exports = {
     filename: "bundle.js"
   },
   // Enable sourcemaps for debugging webpack's output.
-  devtool: "source-map",
+  devtool: "inline-source-map",
+  // devtool: 'cheap-module-eval-source-map',
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: [".ts", ".tsx", ".js", ".json"]
   },
+  devServer: {
+    stats: 'errors-only',
+    port: process.env.PORT,
+    overlay: true,
+    historyApiFallback: true,
+    open: true
+  },
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         enforce: 'pre',
         use: [
           {
@@ -54,10 +63,9 @@ module.exports = {
     new webpack.ProvidePlugin({
       "React": "react",
     }),
+    new TSLintPlugin({
+      files: ['./src/**/*.tsx?']
+    }),
     new Dotenv(),
-  ],
-  // When importing a module whose path matches one of the following, just
-  // assume a corresponding global variable exists and use that instead.
-  // This is important because it allows us to avoid bundling all of our
-  // dependencies, which allows browsers to cache those libraries between builds.
+  ]
 };
