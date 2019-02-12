@@ -2,21 +2,16 @@ import React from "react";
 
 import ids from "../../translations/id/views/footer";
 
-import { Grid, Typography } from "@material-ui/core";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import { FormattedMessage } from "react-intl";
+import {Grid, Typography} from "@material-ui/core";
+import {withStyles, WithStyles} from "@material-ui/core/styles";
+import {FormattedMessage} from "react-intl";
 import styles, {Styles} from "./styles";
 
-interface IFooter extends WithStyles<Styles> {}
+interface IFooterProps extends WithStyles<Styles> {}
 
-const Footer: React.SFC<IFooter> = ({ classes }) => {
+const Footer: React.SFC<IFooterProps> = ({classes}) => {
   return (
-    <Grid
-      className={classes.root}
-      container={true}
-      direction="column"
-      alignItems="center"
-    >
+    <Grid className={classes.root} container direction="column" alignItems="center">
       <Text id={ids.company} />
       <Text id={ids.address} />
       <Text id={ids.zipCode} />
@@ -26,7 +21,7 @@ const Footer: React.SFC<IFooter> = ({ classes }) => {
   );
 };
 
-const Text = ({ id }: {id: string}) => (
+const Text = ({id}: {id: string}) => (
   <Typography color="inherit">
     <FormattedMessage id={id} />
   </Typography>

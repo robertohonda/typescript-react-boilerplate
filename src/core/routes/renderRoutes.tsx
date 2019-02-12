@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch } from "react-router-dom";
 import Route from "./Route";
-import { IRoute } from "./routes";
+import { IRoute, Routes } from "./routes";
 
-const mapRenderRoutes = (routes: IRoute[]) => routes.map((route: IRoute, index: number) => {
+const mapRenderRoutes = (routes: Routes) => routes.map((route: IRoute, index: number) => {
   const { path, exact, component, routes: nextRoutes } = route;
   return (
     <Route
@@ -17,7 +17,7 @@ const mapRenderRoutes = (routes: IRoute[]) => routes.map((route: IRoute, index: 
   );
 });
 
-const renderRoutes = (routes: IRoute[]) => {
+const renderRoutes = (routes: Routes) => {
   return (
     <Switch>
       {mapRenderRoutes(routes)}

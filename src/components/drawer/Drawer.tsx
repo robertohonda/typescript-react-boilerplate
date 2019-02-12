@@ -19,18 +19,18 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 import {ThemeOptions} from "@material-ui/core/styles/createMuiTheme";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
-import styles, { Styles } from "./styles";
+import styles, {Styles} from "./styles";
 
 const categories = ["Produtos", "Cosméticos", "Açougue"];
 
-export interface ICustomDrawer extends RouteComponentProps, WithStyles<Styles> {
+export interface ICustomDrawerProps extends RouteComponentProps, WithStyles<Styles> {
   drawer: {
     open: boolean;
   };
   closeDrawer: () => void;
   theme: ThemeOptions;
 }
-class CustomDrawer extends Component<ICustomDrawer> {
+class CustomDrawer extends Component<ICustomDrawerProps> {
   public render() {
     const {drawer, classes, closeDrawer, theme}: any = this.props;
     return (

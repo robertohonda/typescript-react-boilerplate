@@ -33,4 +33,6 @@ const routes: IRoute[] = [
   },
 ];
 
+export type Routes = typeof routes;
+
 export default routes;

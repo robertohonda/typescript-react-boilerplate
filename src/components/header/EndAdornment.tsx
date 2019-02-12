@@ -1,4 +1,4 @@
-import { WithStyles } from "@material-ui/core";
+import {WithStyles} from "@material-ui/core";
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
@@ -22,33 +22,33 @@ class SearchAppBar extends React.Component<ISearchAppBarProps, ISearchAppBarStat
   };
 
   public handleProfileMenuOpen = (event: any) => {
-    this.setState({ anchorEl: event.currentTarget });
+    this.setState({anchorEl: event.currentTarget});
   }
 
   public handleMenuClose = () => {
-    this.setState({ anchorEl: null });
+    this.setState({anchorEl: null});
     this.handleMobileMenuClose();
   }
 
   public handleMobileMenuOpen = (event: any) => {
-    this.setState({ mobileMoreAnchorEl: event.currentTarget });
+    this.setState({mobileMoreAnchorEl: event.currentTarget});
   }
 
   public handleMobileMenuClose = () => {
-    this.setState({ mobileMoreAnchorEl: null });
+    this.setState({mobileMoreAnchorEl: null});
   }
 
   public render() {
-    const { anchorEl, mobileMoreAnchorEl } = this.state;
-    const { classes }: any = this.props;
+    const {anchorEl, mobileMoreAnchorEl} = this.state;
+    const {classes}: any = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     const renderMenu = (
       <Menu
         anchorEl={anchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{vertical: "top", horizontal: "right"}}
+        transformOrigin={{vertical: "top", horizontal: "right"}}
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
@@ -60,8 +60,8 @@ class SearchAppBar extends React.Component<ISearchAppBarProps, ISearchAppBarStat
     const renderMobileMenu = (
       <Menu
         anchorEl={mobileMoreAnchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{vertical: "top", horizontal: "right"}}
+        transformOrigin={{vertical: "top", horizontal: "right"}}
         open={isMobileMenuOpen}
         onClose={this.handleMobileMenuClose}
       >
@@ -113,11 +113,7 @@ class SearchAppBar extends React.Component<ISearchAppBarProps, ISearchAppBarStat
           </IconButton>
         </div>
         <div className={classes.sectionMobile}>
-          <IconButton
-            aria-haspopup="true"
-            onClick={this.handleMobileMenuOpen}
-            color="inherit"
-          >
+          <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
             <MoreIcon />
           </IconButton>
         </div>

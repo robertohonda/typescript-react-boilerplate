@@ -1,21 +1,21 @@
 import classNames from "classnames";
 import React from "react";
 
-import { AppBar, IconButton, Toolbar, Typography, WithStyles } from "@material-ui/core";
+import {AppBar, IconButton, Toolbar, Typography, WithStyles} from "@material-ui/core";
+
+import ids from "../../translations/id/views/header";
 
 import MenuIcon from "@material-ui/icons/Menu";
-import { InjectedIntlProps } from "react-intl";
-import { IHeaderMessageID } from "../../translations/id/views/header";
+import {InjectedIntlProps} from "react-intl";
 import EndAdornment from "./EndAdornment";
 import Search from "./Search";
 
 export interface IHeaderAppBarProps extends InjectedIntlProps, WithStyles {
-  messageIds: IHeaderMessageID;
   open: boolean;
   openDrawer: () => void;
 }
 
-const HeaderAppBar: React.SFC<IHeaderAppBarProps> = ({ classes, intl, messageIds, open, openDrawer }) => (
+const HeaderAppBar: React.SFC<IHeaderAppBarProps> = ({classes, intl, open, openDrawer}) => (
   <AppBar
     position="fixed"
     className={classNames(classes.appBar, {
@@ -31,18 +31,15 @@ const HeaderAppBar: React.SFC<IHeaderAppBarProps> = ({ classes, intl, messageIds
       >
         <MenuIcon />
       </IconButton>
-      <Title title={intl.formatMessage({ id: messageIds.title })} />
+      <Title title={intl.formatMessage({id: ids.title})} />
       <div className={classes.grow} />
-      <Search
-        classes={classes}
-        label={intl.formatMessage({ id: messageIds.search })}
-      />
+      <Search classes={classes} label={intl.formatMessage({id: ids.search})} />
       <EndAdornment classes={classes} />
     </Toolbar>
   </AppBar>
 );
 
-const Title = ({ title }: {title: string}) => (
+const Title = ({title}: {title: string}) => (
   <Typography variant="h6" color="inherit" noWrap={true}>
     {title}
   </Typography>

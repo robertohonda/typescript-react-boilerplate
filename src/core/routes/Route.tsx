@@ -9,16 +9,16 @@ export interface IRouteProps extends IRoute, InjectedIntlProps {
   renderRoutes: RenderRoutes;
 }
 
-const render = (Component: React.ComponentType, componentProps: any) => (routerProps: RouteChildrenProps) =>
+const render = ({component: Component, ...componentProps}: IRouteProps) => (routerProps: RouteChildrenProps) =>
   <Component {...routerProps} {...componentProps} />;
 
 const ConnectedRoute: React.SFC<IRouteProps> =
-  ({ path, exact, component, ...props }) => {
+  ({ path, exact, ...props }) => {
   return (
     <Route
       path={path}
       exact={exact}
-      render={render(component, props)}
+      render={render(props)}
     />
   );
 };

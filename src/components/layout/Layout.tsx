@@ -8,10 +8,10 @@ import Footer from "../footer";
 import Header from "../header";
 
 // import {intlShape} from "react-intl";
-import { ThemeOptions } from "@material-ui/core/styles/createMuiTheme";
-import { InjectedIntlProps } from "react-intl";
-import { RenderRoutes } from "../../core/routes/renderRoutes";
-import { IRoute } from "../../core/routes/routes";
+import {ThemeOptions} from "@material-ui/core/styles/createMuiTheme";
+import {InjectedIntlProps} from "react-intl";
+import {RenderRoutes} from "../../core/routes/renderRoutes";
+import {IRoute} from "../../core/routes/routes";
 import Drawer from "../drawer";
 
 interface ILayoutProps extends WithStyles<Styles>, InjectedIntlProps {
@@ -26,22 +26,6 @@ class Layout extends Component<ILayoutProps> {
       open: false,
     },
   };
-
-  public openDrawer = () =>
-    this.setState({
-      drawer: {
-        ...this.state.drawer,
-        open: true,
-      },
-    })
-
-  public closeDrawer = () =>
-    this.setState({
-      drawer: {
-        ...this.state.drawer,
-        open: false,
-      },
-    })
 
   public render() {
     const {renderRoutes, routes, classes, theme, intl} = this.props;
@@ -72,6 +56,22 @@ class Layout extends Component<ILayoutProps> {
       </div>
     );
   }
+
+  private openDrawer = () =>
+    this.setState({
+      drawer: {
+        ...this.state.drawer,
+        open: true,
+      },
+    })
+
+  private closeDrawer = () =>
+    this.setState({
+      drawer: {
+        ...this.state.drawer,
+        open: false,
+      },
+    })
 }
 
 export default withStyles(styles, {withTheme: true})(Layout);
