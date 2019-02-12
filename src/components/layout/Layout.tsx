@@ -1,21 +1,23 @@
 import classNames from "classnames";
 import React, {Component} from "react";
 
-import {CssBaseline, Grid, withStyles} from "@material-ui/core";
-import styles from "./styles";
+import {CssBaseline, Grid, withStyles, WithStyles} from "@material-ui/core";
+import styles, {Styles} from "./styles";
 
 import Footer from "../footer";
 import Header from "../header";
 
 // import {intlShape} from "react-intl";
+import { ThemeOptions } from "@material-ui/core/styles/createMuiTheme";
+import { InjectedIntlProps } from "react-intl";
+import { RenderRoutes } from "../../core/routes/renderRoutes";
+import { IRoute } from "../../core/routes/routes";
 import Drawer from "../drawer";
 
-interface ILayoutProps {
-  classes: any;
-  intl: any;
-  renderRoutes: any;
-  routes: object;
-  theme: object;
+interface ILayoutProps extends WithStyles<Styles>, InjectedIntlProps {
+  renderRoutes: RenderRoutes;
+  routes: IRoute[];
+  theme: ThemeOptions;
 }
 
 class Layout extends Component<ILayoutProps> {
@@ -56,7 +58,7 @@ class Layout extends Component<ILayoutProps> {
             })}
           >
             <Grid
-              container={true}
+              container
               direction="column"
               justify="space-between"
               className={classes.gridContainerFooter}

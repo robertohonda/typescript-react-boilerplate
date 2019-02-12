@@ -1,28 +1,28 @@
 import classNames from "classnames";
-import PropTypes from "prop-types";
 import React from "react";
 
-import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, IconButton, Toolbar, Typography, WithStyles } from "@material-ui/core";
 
 import MenuIcon from "@material-ui/icons/Menu";
-import { intlShape } from "react-intl";
+import { InjectedIntlProps } from "react-intl";
+import { IHeaderMessageID } from "../../translations/id/views/header";
 import EndAdornment from "./EndAdornment";
 import Search from "./Search";
 
-const Title = ({ title }: any) => (
-  <Typography variant="h6" color="inherit" noWrap={true}>
-    {title}
-  </Typography>
-);
+export interface IHeaderAppBarProps extends InjectedIntlProps, WithStyles {
+  messageIds: IHeaderMessageID;
+  open: boolean;
+  openDrawer: () => void;
+}
 
-const HeaderAppBar = ({ classes, intl, messageIds, open, openDrawer }: any) => (
+const HeaderAppBar: React.SFC<IHeaderAppBarProps> = ({ classes, intl, messageIds, open, openDrawer }) => (
   <AppBar
     position="fixed"
     className={classNames(classes.appBar, {
       [classes.appBarShift]: open,
     })}
   >
-    <Toolbar disableGutters={!open}>
+    <Toolbar>
       <IconButton
         color="inherit"
         aria-label="Open drawer"
@@ -42,12 +42,10 @@ const HeaderAppBar = ({ classes, intl, messageIds, open, openDrawer }: any) => (
   </AppBar>
 );
 
-HeaderAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-  intl: intlShape.isRequired,
-  messageIds: PropTypes.object.isRequired,
-  open: PropTypes.bool.isRequired,
-  openDrawer: PropTypes.func.isRequired,
-};
+const Title = ({ title }: {title: string}) => (
+  <Typography variant="h6" color="inherit" noWrap={true}>
+    {title}
+  </Typography>
+);
 
 export default HeaderAppBar;

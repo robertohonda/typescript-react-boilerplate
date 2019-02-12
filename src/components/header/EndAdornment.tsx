@@ -1,3 +1,4 @@
+import { WithStyles } from "@material-ui/core";
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
@@ -9,7 +10,12 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import React from "react";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 
-class PrimarySearchAppBar extends React.Component<{classes: any} & RouteComponentProps<{}>> {
+export interface ISearchAppBarProps extends WithStyles, RouteComponentProps {}
+interface ISearchAppBarState {
+  anchorEl: HTMLElement | null;
+  mobileMoreAnchorEl: HTMLElement | null;
+}
+class SearchAppBar extends React.Component<ISearchAppBarProps, ISearchAppBarState> {
   public state = {
     anchorEl: null,
     mobileMoreAnchorEl: null,
@@ -122,4 +128,4 @@ class PrimarySearchAppBar extends React.Component<{classes: any} & RouteComponen
   }
 }
 
-export default withRouter(PrimarySearchAppBar);
+export default withRouter(SearchAppBar);

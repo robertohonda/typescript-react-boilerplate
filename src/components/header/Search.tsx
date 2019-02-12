@@ -1,10 +1,13 @@
-import PropTypes from "prop-types";
 import React from "react";
 
-import { InputBase } from "@material-ui/core";
+import { InputBase, WithStyles } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 
-const Search = ({ classes, label }: any) => (
+export interface ISearchProps extends WithStyles {
+  label: string;
+}
+
+const Search: React.SFC<ISearchProps> = ({ classes, label }) => (
   <div className={classes.search}>
     <div className={classes.searchIcon}>
       <SearchIcon />
@@ -18,10 +21,5 @@ const Search = ({ classes, label }: any) => (
     />
   </div>
 );
-
-Search.propTypes = {
-  classes: PropTypes.object.isRequired,
-  label: PropTypes.string.isRequired,
-};
 
 export default Search;

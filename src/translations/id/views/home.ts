@@ -1,4 +1,4 @@
-import { parseIds } from "../../../helpers/translation";
+import { parseIds } from "../../helpers";
 
 const ids = {
   _path: ["home"],

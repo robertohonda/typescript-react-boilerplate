@@ -1,7 +1,9 @@
+import { createStyles, Theme } from "@material-ui/core";
+
 export const DRAWER_WIDTH = 240;
 export const HEADER_HEIGHT = 64;
 
-const styles = (theme: any) => ({
+const styles = (theme: Theme) => createStyles({
   content: {
     marginLeft: -DRAWER_WIDTH,
     transition: theme.transitions.create("margin", {
@@ -32,5 +34,7 @@ const styles = (theme: any) => ({
     paddingTop: HEADER_HEIGHT, // height of header
   },
 });
+
+export type Styles = typeof styles;
 
 export default styles;

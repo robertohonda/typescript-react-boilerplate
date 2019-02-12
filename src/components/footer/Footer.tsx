@@ -1,20 +1,15 @@
-import PropTypes from "prop-types";
 import React from "react";
 
 import ids from "../../translations/id/views/footer";
 
 import { Grid, Typography } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
 import { FormattedMessage } from "react-intl";
-import styles from "./styles";
+import styles, {Styles} from "./styles";
 
-const Text = ({ id }: any) => (
-  <Typography color="inherit">
-    <FormattedMessage id={id} />
-  </Typography>
-);
+interface IFooter extends WithStyles<Styles> {}
 
-const Footer = ({ classes }: any) => {
+const Footer: React.SFC<IFooter> = ({ classes }) => {
   return (
     <Grid
       className={classes.root}
@@ -31,8 +26,10 @@ const Footer = ({ classes }: any) => {
   );
 };
 
-Footer.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+const Text = ({ id }: {id: string}) => (
+  <Typography color="inherit">
+    <FormattedMessage id={id} />
+  </Typography>
+);
 
 export default withStyles(styles)(Footer);

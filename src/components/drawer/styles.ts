@@ -1,6 +1,7 @@
+import { createStyles, Theme } from "@material-ui/core";
 import { DRAWER_WIDTH } from "../layout/styles";
 
-const styles = (theme: any) => ({
+const styles = (theme: Theme) => createStyles({
   drawer: {
     flexShrink: 0,
     width: DRAWER_WIDTH,
@@ -16,5 +17,7 @@ const styles = (theme: any) => ({
     width: DRAWER_WIDTH,
   },
 });
+
+export type Styles = typeof styles;
 
 export default styles;

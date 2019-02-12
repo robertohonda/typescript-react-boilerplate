@@ -1,12 +1,15 @@
 {
   "extends": [
-    "tslint:recommended",
+    "tslint:latest",
     "tslint-eslint-rules",
     "tslint-react"
   ],
   "rules": {
     // override tslint-react rules here
-    "jsx-no-multiline-js": false
+    "jsx-no-multiline-js": false,
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": [true, "dev"],
+    "jsx-boolean-value": false
   },
   "linterOptions": {
     "exclude": [

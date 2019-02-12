@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import { renderRoutes } from "../../helpers/routes";
+import renderRoutes from "./renderRoutes";
 import routes from "./routes";
 
 const AppRouter = () => (

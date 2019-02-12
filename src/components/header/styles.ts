@@ -1,8 +1,9 @@
 
+import { createStyles, Theme } from "@material-ui/core";
 import {fade} from "@material-ui/core/styles/colorManipulator";
 import {DRAWER_WIDTH, HEADER_HEIGHT} from "../layout/styles";
 
-const styles = (theme: any): any => ({
+const styles = (theme: Theme) => createStyles({
   appBar: {
     minHeight: HEADER_HEIGHT,
     transition: theme.transitions.create(["margin", "width"], {

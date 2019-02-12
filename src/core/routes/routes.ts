@@ -3,7 +3,14 @@ import Counter from "../../components/counter/Counter";
 import Layout from "../../components/layout";
 // import Home from "../views/Home";
 
-const routes = [
+export interface IRoute {
+  component: React.ComponentType<any>;
+  exact?: boolean;
+  path?: string;
+  routes?: IRoute[];
+}
+
+const routes: IRoute[] = [
   {
     component: Layout,
     routes: [

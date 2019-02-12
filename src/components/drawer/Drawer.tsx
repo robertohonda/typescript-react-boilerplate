@@ -2,27 +2,35 @@ import React, {Component} from "react";
 
 import {RouteComponentProps, withRouter} from "react-router-dom";
 
-import {Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, withStyles} from "@material-ui/core";
+import {
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  withStyles,
+  WithStyles,
+} from "@material-ui/core";
 
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
+import {ThemeOptions} from "@material-ui/core/styles/createMuiTheme";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
-import styles from "./styles";
+import styles, { Styles } from "./styles";
 
 const categories = ["Produtos", "Cosméticos", "Açougue"];
 
-const DrawerListItem = ({Icon, text, onClick}: any) => (
-  <ListItem button={true} key={text} onClick={onClick}>
-    <ListItemIcon>
-      <Icon />
-    </ListItemIcon>
-    <ListItemText primary={text} />
-  </ListItem>
-);
-
-class CustomDrawer extends Component<RouteComponentProps<{}> & any> {
-
+export interface ICustomDrawer extends RouteComponentProps, WithStyles<Styles> {
+  drawer: {
+    open: boolean;
+  };
+  closeDrawer: () => void;
+  theme: ThemeOptions;
+}
+class CustomDrawer extends Component<ICustomDrawer> {
   public render() {
     const {drawer, classes, closeDrawer, theme}: any = this.props;
     return (
@@ -51,9 +59,18 @@ class CustomDrawer extends Component<RouteComponentProps<{}> & any> {
   }
 
   private handleClickListItem = () => {
-    const {history}: any = this;
+    const {history}: any = this.props;
     history.push("/seila");
   }
 }
+
+const DrawerListItem = ({Icon, text, onClick}: any) => (
+  <ListItem button={true} key={text} onClick={onClick}>
+    <ListItemIcon>
+      <Icon />
+    </ListItemIcon>
+    <ListItemText primary={text} />
+  </ListItem>
+);
 
 export default withStyles(styles)(withRouter(CustomDrawer));

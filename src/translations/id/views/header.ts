@@ -1,4 +1,9 @@
-import { parseIds } from "../../../helpers/translation";
+import { parseIds } from "../../helpers";
+
+export interface IHeaderMessageID {
+  search: string;
+  title: string;
+}
 
 const ids = {
   _path: ["header"],
