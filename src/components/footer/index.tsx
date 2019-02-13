@@ -1,1 +1,1 @@
-export { default } from "./Footer";
+export { default, IFooterProps } from "./Footer";

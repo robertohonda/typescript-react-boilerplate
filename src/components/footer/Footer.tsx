@@ -7,7 +7,7 @@ import {withStyles, WithStyles} from "@material-ui/core/styles";
 import {FormattedMessage} from "react-intl";
 import styles, {Styles} from "./styles";
 
-interface IFooterProps extends WithStyles<Styles> {}
+export interface IFooterProps extends WithStyles<Styles> {}
 
 const Footer: React.SFC<IFooterProps> = ({classes}) => {
   return (

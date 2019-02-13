@@ -1,1 +1,1 @@
-export { default } from "./ConnectedIntlProvider";
+export { default, IConnectedIntlProviderProps } from "./ConnectedIntlProvider";

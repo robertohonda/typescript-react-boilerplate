@@ -14,7 +14,7 @@ import {RenderRoutes} from "../../core/routes/renderRoutes";
 import {IRoute} from "../../core/routes/routes";
 import Drawer from "../drawer";
 
-interface ILayoutProps extends WithStyles<Styles>, InjectedIntlProps {
+export interface ILayoutProps extends WithStyles<Styles>, InjectedIntlProps {
   renderRoutes: RenderRoutes;
   routes: IRoute[];
   theme: ThemeOptions;

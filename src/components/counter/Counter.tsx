@@ -1,7 +1,5 @@
 import React from "react";
-import {connect} from "react-redux";
-import {addCounter, decCounter} from "../../store/actions/counter/counter";
-import IStore from "../../store/interfaces";
+import Button from "../button/Button";
 
 export interface ICounterProps {
   counter: number;
@@ -9,24 +7,12 @@ export interface ICounterProps {
   decCounter: () => void;
 }
 
-const Counter: React.SFC<ICounterProps> = ({counter, addCounter: add, decCounter: dec}) => (
+const Counter: React.SFC<ICounterProps> = ({counter, addCounter, decCounter}) => (
   <div>
     <h1>{counter}</h1>
-    <button onClick={add}>ADD</button>
-    <button onClick={dec}>DEC</button>
+    <Button onClick={addCounter} color="primary" variant="contained">ADD</Button>
+    <Button onClick={decCounter} color="primary" variant="contained">DEC</Button>
   </div>
 );
 
-const mapStateToProps = ({counter}: IStore) => ({
-  counter,
-});
-
-const mapDispatchToProps = {
-  addCounter,
-  decCounter,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Counter);
+export default Counter;

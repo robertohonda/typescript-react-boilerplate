@@ -23,14 +23,14 @@ import styles, {Styles} from "./styles";
 
 const categories = ["Produtos", "Cosméticos", "Açougue"];
 
-export interface ICustomDrawerProps extends RouteComponentProps, WithStyles<Styles> {
+export interface IDrawerProps extends RouteComponentProps, WithStyles<Styles> {
   drawer: {
     open: boolean;
   };
   closeDrawer: () => void;
   theme: ThemeOptions;
 }
-class CustomDrawer extends Component<ICustomDrawerProps> {
+class CustomDrawer extends Component<IDrawerProps> {
   public render() {
     const {drawer, classes, closeDrawer, theme}: any = this.props;
     return (
