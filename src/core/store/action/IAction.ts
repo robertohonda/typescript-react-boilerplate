@@ -4,4 +4,5 @@ export type IMapDispatchToProps = (dispatch: Dispatch) => void;
 
 export interface IAction {
   type: string;
+  payload?: any;
 }
