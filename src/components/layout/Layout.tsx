@@ -7,7 +7,6 @@ import styles, {Styles} from "./styles";
 import Footer from "../footer";
 import Header from "../header";
 
-// import {intlShape} from "react-intl";
 import {ThemeOptions} from "@material-ui/core/styles/createMuiTheme";
 import {InjectedIntlProps} from "react-intl";
 import {RenderRoutes} from "../../core/routes/renderRoutes";

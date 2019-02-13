@@ -1,7 +1,7 @@
-// import { language } from "../../../translations/config";
+import { language } from "../../../translations/config";
 import {SET_LANGUAGE} from "../../actions/types";
 
-const initialState = "pt";
+const initialState = language;
 
 export default (state = initialState, action: any) => {
   switch (action.type) {
